@@ -1,0 +1,48 @@
+#
+# GitHub Actions Workflow for publishing to GitHub Packages
+#   reference: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+#
+
+name: Publish Package to GitHub Packages
+
+on:
+  release:
+    types: [published]
+  push:
+    branches:
+      - master
+    paths:
+      - 'package.json'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@printags'
+      
+      - name: Install system dependencies
+        run: sudo apt-get install -y libpcsclite1 libpcsclite-dev pcscd
+      
+      - name: Install dependencies
+        run: npm install --verbose
+      
+      - name: Build dist
+        run: npm run build
+      
+      - name: Run tests
+        run: npm test
+      
+      - name: Publish to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

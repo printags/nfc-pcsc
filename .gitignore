@@ -37,3 +37,5 @@ node_modules/
 
 # built source (pushed into npm)
 /dist/
+
+**/.claude/settings.local.json
