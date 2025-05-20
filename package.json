@@ -1,6 +1,6 @@
 {
   "name": "@printags/nfc-pcsc",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Easy reading and writing NFC tags and cards",
   "keywords": [
     "arc122",
@@ -54,20 +54,25 @@
     "test": "cross-env NODE_ENV=test ava test/tests.js --verbose"
   },
   "dependencies": {
-    "@printags/node-pcsclite": "github:printags/node-pcsclite"
+    "@printags/node-pcsclite": "^0.8.9"
   },
   "devDependencies": {
-    "@babel/cli": "^7.26.4",
-    "@babel/core": "^7.26.0",
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.1",
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
-    "@babel/plugin-transform-class-properties": "^7.25.9",
-    "@babel/plugin-transform-modules-commonjs": "^7.26.3",
-    "@babel/register": "^7.25.9",
-    "ava": "^6.2.0",
+    "@babel/plugin-transform-class-properties": "^7.27.1",
+    "@babel/plugin-transform-modules-commonjs": "^7.27.1",
+    "@babel/register": "^7.27.1",
+    "ava": "^6.3.0",
     "chalk": "^4.0.0",
     "cross-env": "^7.0.3",
     "mock-require": "^3.0.3",
     "triple-beam": "^1.4.1",
     "winston": "^3.17.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@printags/node-pcsclite"
+    ]
   }
 }
