@@ -1,6 +1,6 @@
 {
   "name": "@printags/nfc-pcsc",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Easy reading and writing NFC tags and cards",
   "keywords": [
     "arc122",
